@@ -11,7 +11,7 @@ terraform apply -auto-approve
 
 # Wait while the instance boots up
 # (Could also use a provisioner in the TF config to do this)
-sleep 60 
+sleep 60
 
 # Query the output, extract the IP and make a request
 terraform output -json |\

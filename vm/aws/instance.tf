@@ -26,4 +26,3 @@ resource "aws_security_group_rule" "allow_http_inbound" {
 output "instance_ip_addr" {
   value = aws_instance.instance.public_ip
 }
-
