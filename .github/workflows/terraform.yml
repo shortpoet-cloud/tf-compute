@@ -37,15 +37,15 @@ jobs:
         # https://github.com/aws-actions/configure-aws-credentials/issues/112#issuecomment-1273757307
         run: |
           profile=${{ vars.AWS_PROFILE }}
-          aws configure --profile $profile set "profile.${profile}.role_arn" ${{ secrets.AWS_ROLE_TO_ASSUME }}
-          aws configure --profile $profile set "profile.${profile}.source_profile" default
-          aws configure --profile $profile set "profile.${profile}.region" ${{ vars.AWS_DEFAULT_REGION }}
-          # aws configure --profile $profile set "profile.${profile}.role_session_name" "Terraform"
-          # aws configure --profile $profile set "profile.${profile}.credential_source" "Environment"
-          aws configure --profile $profile set "profile.${profile}.aws_access_key_id" ${{ env.AWS_ACCESS_KEY_ID }}
-          aws configure --profile $profile set "profile.${profile}.aws_secret_access_key" ${{ env.AWS_SECRET_ACCESS_KEY }}
-          aws configure --profile $profile set "profile.${profile}.role_duration_seconds" 1200
-          aws configure --profile $profile set "profile.${profile}.session_token" ${{ env.AWS_SESSION_TOKEN }}
+          aws configure --profile "$profile" set "profile.${profile}.role_arn" ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws configure --profile "$profile" set "profile.${profile}.source_profile" "$profile"
+          aws configure --profile "$profile" set "profile.${profile}.region" ${{ vars.AWS_DEFAULT_REGION }}
+          # aws configure --profile "$profile" set "profile.${profile}.role_session_name" "Terraform"
+          # aws configure --profile "$profile" set "profile.${profile}.credential_source" "Environment"
+          aws configure --profile "$profile" set "profile.${profile}.aws_access_key_id" ${{ env.AWS_ACCESS_KEY_ID }}
+          aws configure --profile "$profile" set "profile.${profile}.aws_secret_access_key" ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws configure --profile "$profile" set "profile.${profile}.role_duration_seconds" 1200
+          aws configure --profile "$profile" set "profile.${profile}.session_token" ${{ env.AWS_SESSION_TOKEN }}
           cat ~/.aws/config
           cat ~/.aws/credentials
           aws sts get-caller-identity
