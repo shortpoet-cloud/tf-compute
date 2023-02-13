@@ -23,18 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Check Vars
-        run: |
-          echo "AWS_ACCESS_KEY_ID: $${{ secrets.AWS_ACCESS_KEY_ID }}"
-          echo "AWS_SECRET_ACCESS_KEY: $${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-          echo "AWS_ROLE_TO_ASSUME: $${{ secrets.AWS_ROLE_TO_ASSUME }}"
-          echo "AWS_DEFAULT_REGION: $${{ vars.AWS_DEFAULT_REGION }}"
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          role-to-assume: $${{ secrets.AWS_ROLE_TO_ASSUME }}
-          aws-region: $${{ vars.AWS_DEFAULT_REGION }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.AWS_DEFAULT_REGION }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
