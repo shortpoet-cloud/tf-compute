@@ -23,6 +23,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: $${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: $${{ variables.AWS_DEFAULT_REGION }}
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:

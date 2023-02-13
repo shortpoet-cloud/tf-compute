@@ -7,5 +7,6 @@ terraform {
     dynamodb_table = "terraform-backend-lock"
     profile        = "terraform-admin"
     encrypt        = "true"
+    role_arn       = "arn:aws:iam::341864192726:role/terraform-admin"
   }
 }
