@@ -44,6 +44,7 @@ jobs:
         # aws configure --profile "$profile" set "profile.${profile}.source_profile" "$profile"
         # aws configure --profile "$profile" set "profile.${profile}.region" ${{ vars.AWS_DEFAULT_REGION }}
         # aws configure --profile "$profile" set "profile.${profile}.role_duration_seconds" 1200
+        # aws sts get-caller-identity --profile "$profile"
         run: |
           profile=${{ vars.AWS_PROFILE }}
           aws configure --profile "$profile" set "profile.${profile}.aws_access_key_id" ${{ env.AWS_ACCESS_KEY_ID }}
@@ -51,7 +52,6 @@ jobs:
           cat ~/.aws/credentials
           aws configure list
           aws sts get-caller-identity
-          aws sts get-caller-identity --profile "$profile"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
