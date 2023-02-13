@@ -51,7 +51,7 @@ jobs:
           cat ~/.aws/credentials
           aws configure list
           aws sts get-caller-identity
-          aws sts get-caller-identity --profile ${{ vars.AWS_PROFILE }}
+          aws sts get-caller-identity --profile "$profile"
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
