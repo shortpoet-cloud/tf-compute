@@ -34,10 +34,13 @@ jobs:
 
       - name: Terraform Profile
         id: profile
+        # https://github.com/aws-actions/configure-aws-credentials/issues/112#issuecomment-1273757307
         run: |
           aws configure set region ${{ vars.AWS_DEFAULT_REGION }} --profile ${{ vars.AWS_PROFILE }}
           aws configure set role_arn ${{ secrets.AWS_ROLE_TO_ASSUME }} --profile ${{ vars.AWS_PROFILE }}
-          aws configure set web_identity_token_file "~/.aws/web_identity_token_file" --profile ${{ vars.AWS_PROFILE }}
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }} --profile ${{ vars.AWS_PROFILE }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }} --profile ${{ vars.AWS_PROFILE }}
+          aws configure set session_token ${{ secrets.AWS_SESSION_TOKEN }} --profile ${{ vars.AWS_PROFILE }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
