@@ -36,7 +36,7 @@ jobs:
         id: profile
         # https://github.com/aws-actions/configure-aws-credentials/issues/112#issuecomment-1273757307
         run: |
-          profile=${{ secrets.AWS_PROFILE }}
+          profile=${{ vars.AWS_PROFILE }}
           aws configure --profile $profile set "profile.${profile}.role_arn" ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws configure --profile $profile set "profile.${profile}.source_profile" default
           aws configure --profile $profile set "profile.${profile}.region" ${{ vars.AWS_DEFAULT_REGION }}
