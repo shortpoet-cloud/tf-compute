@@ -32,6 +32,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-duration-seconds: 1200
 
+      - name: Terraform Profile
+        id: profile
+        run: |
+          aws configure set region ${{ vars.AWS_DEFAULT_REGION }} --profile ${{ vars.AWS_PROFILE }}
+          aws configure set role_arn ${{ secrets.AWS_ROLE_TO_ASSUME }} --profile ${{ vars.AWS_PROFILE }}
+          aws configure set web_identity_token_file "~/.aws/web_identity_token_file" --profile ${{ vars.AWS_PROFILE }}
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
