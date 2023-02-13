@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v1
+        uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.0.1
           terraform_wrapper: false
@@ -108,7 +108,7 @@ jobs:
 
       - name: Terraform Apply Production
         if: steps.check-tag.outputs.environment == 'production' && github.event_name == 'release'
-        working-directory: 07-managing-multiple-environments/file-structure/production
+        working-directory: vm/aws
         run: |
           terraform init
           terraform apply -var db_pass=${{secrets.DB_PASS }} -auto-approve
