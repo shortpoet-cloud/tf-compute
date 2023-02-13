@@ -43,6 +43,8 @@ jobs:
           aws configure set session_token ${{ env.AWS_SESSION_TOKEN }} --profile ${{ vars.AWS_PROFILE }}
           cat ~/.aws/config
           cat ~/.aws/credentials
+          aws sts get-caller-identity
+          aws sts get-caller-identity --profile ${{ vars.AWS_PROFILE }}
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
