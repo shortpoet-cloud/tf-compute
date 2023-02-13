@@ -35,13 +35,13 @@ jobs:
       - name: Terraform Profile
         id: profile
         # https://github.com/aws-actions/configure-aws-credentials/issues/112#issuecomment-1273757307
+        # aws configure --profile "$profile" set "profile.${profile}.role_arn" ${{ secrets.AWS_ROLE_TO_ASSUME }}
+        # aws configure --profile "$profile" set "profile.${profile}.role_session_name" "Terraform"
+        # aws configure --profile "$profile" set "profile.${profile}.credential_source" "Environment"
         run: |
           profile=${{ vars.AWS_PROFILE }}
-          aws configure --profile "$profile" set "profile.${profile}.role_arn" ${{ secrets.AWS_ROLE_TO_ASSUME }}
           aws configure --profile "$profile" set "profile.${profile}.source_profile" "$profile"
           aws configure --profile "$profile" set "profile.${profile}.region" ${{ vars.AWS_DEFAULT_REGION }}
-          # aws configure --profile "$profile" set "profile.${profile}.role_session_name" "Terraform"
-          # aws configure --profile "$profile" set "profile.${profile}.credential_source" "Environment"
           aws configure --profile "$profile" set "profile.${profile}.aws_access_key_id" ${{ env.AWS_ACCESS_KEY_ID }}
           aws configure --profile "$profile" set "profile.${profile}.aws_secret_access_key" ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure --profile "$profile" set "profile.${profile}.role_duration_seconds" 1200
