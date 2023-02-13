@@ -26,3 +26,7 @@ resource "aws_security_group_rule" "allow_http_inbound" {
 output "instance_ip_addr" {
   value = aws_instance.instance.public_ip
 }
+
+output "url" {
+  value = "http://${aws_instance.instance.public_ip}:8080"
+}
