@@ -11,6 +11,6 @@ terraform {
 # Configure the AWS Provider
 provider "aws" {
   assume_role {
-    role_arn = "arn:aws:iam::341864192726:role/iam-role-admin-us-east-1"
+    role_arn = ""
   }
 }
