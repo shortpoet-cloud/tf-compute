@@ -3,7 +3,14 @@
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
-No requirements.
+### Webhook Config
+
+create incoming webhook service connection in azdo 
+
+pass generate Azdo/sorianocarlitos/service_connections/github
+
+https://dev.azure.com/sorianocarlitos/_apis/public/distributedtask/webhooks/github?api-version=6.0-preview
+
 
 ## Providers
 
