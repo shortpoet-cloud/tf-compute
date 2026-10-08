@@ -36,7 +36,7 @@ data "aws_security_group" "sg" {
   }
 }
 locals {
-  sg_ids          = [for sg in var.sg_names : lookup(data.aws_security_group.sg, sg).id]
+  sg_ids          = [for sg in var.sg_names : data.aws_security_group.sg[sg].id]
   env             = var.env
   region          = data.aws_region.current.name
   ec2_name        = "ec2-tf-${var.env}-${var.tier}-${data.aws_subnet.subnet.availability_zone}"

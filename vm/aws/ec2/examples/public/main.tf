@@ -35,6 +35,7 @@ module "ec2_public_1b" {
 #   value = module[*].sg_ids
 # }
 output "ec2_ips" {
+  description = "Public IPs of the two public example instances."
   value = {
     public_1a = module.ec2_public_1a.ec2.public_ip
     public_1b = module.ec2_public_1b.ec2.public_ip

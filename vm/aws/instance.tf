@@ -24,9 +24,11 @@ resource "aws_security_group_rule" "allow_http_inbound" {
 }
 
 output "instance_ip_addr" {
-  value = aws_instance.instance.public_ip
+  description = "Public IP address of the instance."
+  value       = aws_instance.instance.public_ip
 }
 
 output "url" {
-  value = "http://${aws_instance.instance.public_ip}:8080"
+  description = "URL of the web server the instance serves on port 8080."
+  value       = "http://${aws_instance.instance.public_ip}:8080"
 }

@@ -10,17 +10,22 @@ module "ec2_private" {
 }
 
 output "ami" {
-  value = module.ec2_private.ami
+  description = "The AMI of the private example instance."
+  value       = module.ec2_private.ami
 }
 output "subnet" {
-  value = module.ec2_private.subnet
+  description = "The subnet of the private example instance."
+  value       = module.ec2_private.subnet
 }
 output "sgs" {
-  value = module.ec2_private.sgs
+  description = "The security groups of the private example instance."
+  value       = module.ec2_private.sgs
 }
 output "sg_ids" {
-  value = module.ec2_private.sg_ids
+  description = "Security group ids of the private example instance."
+  value       = module.ec2_private.sg_ids
 }
 output "ec2" {
-  value = module.ec2_private.ec2
+  description = "The private example instance."
+  value       = module.ec2_private.ec2
 }
