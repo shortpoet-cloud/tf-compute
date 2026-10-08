@@ -1,0 +1,21 @@
+# Minimal AKS for Interview Prep
+# Copy to terraform.tfvars and customize
+
+name_prefix = "aks-demo"
+location    = "eastus"  # Usually cheapest
+environment = "dev"
+
+# Node configuration
+# kubernetes_version = "1.33"  # unset uses the AKS default; az aks get-versions -l eastus
+node_vm_size       = "Standard_B2s"  # ~$30/month
+node_count         = 1               # Keep minimal
+
+# Cost savings options
+use_spot    = false  # Set true for ~70% savings (nodes can be evicted)
+create_acr  = false  # Set true to create container registry (+~$5/month)
+auto_upgrade = true
+
+tags = {
+  Owner   = "carlos"
+  Project = "k8s-interview-prep"
+}
